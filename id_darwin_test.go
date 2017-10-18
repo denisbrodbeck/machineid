@@ -3,6 +3,7 @@
 package machineid
 
 import "testing"
+import "strings"
 
 const sampleOutput = `+-o MacBookPro12,1  <class IOPlatformExpertDevice, id 0x100000112, registered, matched, active, busy 0 (580075 ms), retain 42>
 {
@@ -30,7 +31,22 @@ const sampleOutput = `+-o MacBookPro12,1  <class IOPlatformExpertDevice, id 0x10
 
 func Test_extractID(t *testing.T) {
 	want := "A3344D1DD-1234-22A1-B123-11AB1C11D111"
-	if got := extractID(sampleOutput); got != want {
+	got, err := extractID(sampleOutput)
+	if err != nil {
+		t.Error(err)
+	}
+	if got != want {
 		t.Errorf("extractID() = %v, want %v", got, want)
+	}
+}
+
+func Test_extractID_invalidInput(t *testing.T) {
+	want := "A3344D1DD-1234-22A1-B123-11AB1C11D111"
+	got, err := extractID("invalid input")
+	if err == nil {
+		t.Error("expected error, got none")
+	}
+	if strings.Contains(err.Error(), "Failed to extract 'IOPlatformUUID'") == false {
+		t.Errorf("Got unexpected error: %v", err)
 	}
 }
