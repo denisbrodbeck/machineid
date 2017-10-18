@@ -41,10 +41,12 @@ func Test_extractID(t *testing.T) {
 }
 
 func Test_extractID_invalidInput(t *testing.T) {
-	want := "A3344D1DD-1234-22A1-B123-11AB1C11D111"
 	got, err := extractID("invalid input")
 	if err == nil {
 		t.Error("expected error, got none")
+	}
+	if got != "" {
+		t.Errorf("expected empty string, got some value %s", got)
 	}
 	if strings.Contains(err.Error(), "Failed to extract 'IOPlatformUUID'") == false {
 		t.Errorf("Got unexpected error: %v", err)
