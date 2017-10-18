@@ -29,7 +29,7 @@ func extractID(lines string) (string, error) {
 		if strings.Contains(line, "IOPlatformUUID") {
 			parts := strings.SplitAfter(line, `" = "`)
 			if len(parts) == 2 {
-				return strings.TrimRight(parts[1], `"`)
+				return strings.TrimRight(parts[1], `"`), nil
 			}
 		}
 	}
