@@ -1,1 +1,1 @@
-mid
+# Unique Machine ID without admin rights
