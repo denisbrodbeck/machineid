@@ -9,7 +9,7 @@
 * Cross-Platform (tested on Win7+, Debian 8+, Ubuntu 14.04+, OS X 10.6+, FreeBSD 11+)
 * No admin privileges required
 * Hardware independent (no usage of MAC, BIOS or CPU — those are to unreliable, especially in a VM environment)
-* IDs are unique<sup>[1](#Unique_Key_Reliability)</sup> to the installed OS
+* IDs are unique<sup>[1](#unique-key-reliability)</sup> to the installed OS
 
 ## Installation
 
