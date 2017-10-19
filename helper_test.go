@@ -1,9 +1,11 @@
 package machineid
 
 import (
+	"bytes"
 	"crypto/hmac"
 	"crypto/sha256"
 	"encoding/hex"
+	"strings"
 	"testing"
 )
 
@@ -35,4 +37,33 @@ func checkMAC(message, messageMAC, key []byte) bool {
 	mac.Write(message)
 	expectedMAC := mac.Sum(nil)
 	return hmac.Equal(messageMAC, expectedMAC)
+}
+
+func Test_run(t *testing.T) {
+	stdout := &bytes.Buffer{}
+	stderr := &bytes.Buffer{}
+	wantStdout := "hello"
+	wantStderr := ""
+	if err := run(stdout, stderr, "echo", "hello"); err != nil {
+		t.Error(err)
+	}
+	gotStdout := strings.TrimRight(stdout.String(), "\r\n")
+	if gotStdout != wantStdout {
+		t.Errorf("run() = %v, want %v", gotStdout, wantStdout)
+	}
+	if gotStderr := stderr.String(); gotStderr != wantStderr {
+		t.Errorf("run() = %v, want %v", gotStderr, wantStderr)
+	}
+}
+
+func Test_run_unknown(t *testing.T) {
+	stdout := &bytes.Buffer{}
+	stderr := &bytes.Buffer{}
+	err := run(stdout, stderr, "echolo", "hello")
+	if err == nil {
+		t.Error("expected error, got none")
+	}
+	if strings.Contains(err.Error(), "executable file not found") == false {
+		t.Error("unexpected error, expected exec not found")
+	}
 }

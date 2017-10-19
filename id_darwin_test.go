@@ -2,8 +2,10 @@
 
 package machineid
 
-import "testing"
-import "strings"
+import (
+	"strings"
+	"testing"
+)
 
 const sampleOutput = `+-o MacBookPro12,1  <class IOPlatformExpertDevice, id 0x100000112, registered, matched, active, busy 0 (580075 ms), retain 42>
 {
@@ -50,5 +52,15 @@ func Test_extractID_invalidInput(t *testing.T) {
 	}
 	if strings.Contains(err.Error(), "Failed to extract 'IOPlatformUUID'") == false {
 		t.Errorf("Got unexpected error: %v", err)
+	}
+}
+
+func Test_machineID(t *testing.T) {
+	got, err := machineID()
+	if err != nil {
+		t.Error(err)
+	}
+	if got == "" {
+		t.Error("Got empty machine id")
 	}
 }
