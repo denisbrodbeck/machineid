@@ -14,3 +14,12 @@ func Example() {
 	}
 	fmt.Println(id)
 }
+
+func ExampleProtected() {
+	appID := "Corp.SomeApp"
+	id, err := machineid.ProtectedID(appID)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(id)
+}
