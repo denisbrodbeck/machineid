@@ -1,4 +1,6 @@
 // Package machineid provides support for reading the unique machine id of most host OS's (without admin privileges).
+// https://github.com/denisbrodbeck/machineid
+// Supported OS systems: BSD, Linux, OS X, Windows
 package machineid // import "github.com/denisbrodbeck/machineid"
 
 // ID returns the platform specific machine id of the current host OS.
