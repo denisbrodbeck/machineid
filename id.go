@@ -1,22 +1,19 @@
 // Package machineid provides support for reading the unique machine id of most host OS's (without admin privileges).
 package machineid // import "github.com/denisbrodbeck/machineid"
 
-import (
-	"io"
-	"os"
-	"os/exec"
-)
-
-// ID returns the platform specific machine id of the current host.
+// ID returns the platform specific machine id of the current host OS.
+// Regard the returned id as "confidential" and consider using ProtectedID() instead.
 func ID() (string, error) {
 	return machineID()
 }
 
-// run wraps `exec.Command` with easy access to stdout and stderr.
-func run(stdout, stderr io.Writer, cmd string, args ...string) error {
-	c := exec.Command(cmd, args...)
-	c.Stdin = os.Stdin
-	c.Stdout = stdout
-	c.Stderr = stderr
-	return c.Run()
+// ProtectedID returns a hashed version of the machine ID in a cryptographically secure way,
+// using a fixed, application-specific key.
+// Internally, this function calculates HMAC-SHA256 of the application ID, keyed by the machine ID.
+func ProtectedID(appID string) (string, error) {
+	id, err := ID()
+	if err != nil {
+		return "", err
+	}
+	return protect(appID, id), nil
 }
