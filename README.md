@@ -4,7 +4,7 @@
 
 … because sometimes you just need to reliably identify your machines.
 
-[![GoDoc](https://godoc.org/github.com/denisbrodbeck/machineid?status.svg)](https://godoc.org/github.com/denisbrodbeck/machineid)
+[![GoDoc](https://godoc.org/github.com/denisbrodbeck/machineid?status.svg)](https://godoc.org/github.com/denisbrodbeck/machineid) [![Go Report Card](https://goreportcard.com/badge/github.com/denisbrodbeck/machineid)](https://goreportcard.com/report/github.com/denisbrodbeck/machineid)
 
 ## Main Features
 
