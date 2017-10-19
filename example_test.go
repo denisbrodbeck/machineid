@@ -15,7 +15,7 @@ func Example() {
 	fmt.Println(id)
 }
 
-func ExampleProtected() {
+func Example_protected() {
 	appID := "Corp.SomeApp"
 	id, err := machineid.ProtectedID(appID)
 	if err != nil {
