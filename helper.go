@@ -3,7 +3,7 @@ package machineid
 import (
 	"crypto/hmac"
 	"crypto/sha256"
-	"fmt"
+	"encoding/hex"
 	"io"
 	"os"
 	"os/exec"
@@ -18,8 +18,9 @@ func run(stdout, stderr io.Writer, cmd string, args ...string) error {
 	return c.Run()
 }
 
+// protect calculates HMAC-SHA256 of the application ID, keyed by the machine ID and returns a hex-encoded string.
 func protect(appID, id string) string {
 	mac := hmac.New(sha256.New, []byte(id))
 	mac.Write([]byte(appID))
-	return fmt.Sprintf("%x", mac.Sum(nil))
+	return hex.EncodeToString(mac.Sum(nil))
 }
