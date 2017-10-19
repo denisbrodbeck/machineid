@@ -4,6 +4,8 @@
 
 … because sometimes you just need to reliably identify your machines.
 
+[![GoDoc](https://godoc.org/github.com/denisbrodbeck/machineid?status.svg)](https://godoc.org/github.com/denisbrodbeck/machineid)
+
 ## Main Features
 
 * Cross-Platform (tested on Win7+, Debian 8+, Ubuntu 14.04+, OS X 10.6+, FreeBSD 11+)
