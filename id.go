@@ -17,10 +17,18 @@
 // Windows users can use the `sysprep` toolchain to create images, which produce valid images ready for distribution.
 package machineid // import "github.com/denisbrodbeck/machineid"
 
+import (
+	"fmt"
+)
+
 // ID returns the platform specific machine id of the current host OS.
 // Regard the returned id as "confidential" and consider using ProtectedID() instead.
 func ID() (string, error) {
-	return machineID()
+	id, err := machineID()
+	if err != nil {
+		return "", fmt.Errorf("machineid: %v", err)
+	}
+	return id, nil
 }
 
 // ProtectedID returns a hashed version of the machine ID in a cryptographically secure way,
@@ -29,7 +37,7 @@ func ID() (string, error) {
 func ProtectedID(appID string) (string, error) {
 	id, err := ID()
 	if err != nil {
-		return "", err
+		return "", fmt.Errorf("machineid: %v", err)
 	}
 	return protect(appID, id), nil
 }
