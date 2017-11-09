@@ -1,10 +1,10 @@
 .PHONY: build clean default test
 
 build: clean
-	@go build -o bin/machineid ./cli/machineid/main.go
+	@go build -o machineid ./cmd/machineid/main.go
 
 clean:
-	@rm -rf ./bin/*
+	@rm -rf ./machineid
 
 test:
 	go test ./...

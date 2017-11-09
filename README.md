@@ -24,7 +24,7 @@ go get github.com/denisbrodbeck/machineid
 You can also add the cli app directly to your `$GOPATH/bin` with
 
 ```bash
-go get github.com/denisbrodbeck/machineid/cli/machineid
+go get github.com/denisbrodbeck/machineid/cmd/machineid
 ```
 
 ## Usage

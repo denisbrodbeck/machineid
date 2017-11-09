@@ -26,4 +26,4 @@ _testmain.go
 .DS_Store
 .vscode
 result
-/bin
+/machineid
