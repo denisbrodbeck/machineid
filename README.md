@@ -83,7 +83,7 @@ All machine IDs are usually generated during system installation and stay consta
 
 The following sources are used:
 
-* **BSD** uses `smbios.system.uuid`
+* **BSD** uses `/etc/hostid` and `smbios.system.uuid` as a fallback
 * **Linux** uses `/var/lib/dbus/machine-id` ([man](http://man7.org/linux/man-pages/man5/machine-id.5.html))
 * **OS X** uses `IOPlatformUUID`
 * **Windows** uses the `MachineGuid` from `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography`
@@ -144,6 +144,8 @@ Don't want to download code and need just a way to get the data by yourself?
 BSD:
 
 ```bash
+cat /etc/hostid
+# or (might be empty)
 kenv -q smbios.system.uuid
 ```
 

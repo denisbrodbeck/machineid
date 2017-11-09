@@ -5,6 +5,7 @@ import (
 	"crypto/sha256"
 	"encoding/hex"
 	"io"
+	"io/ioutil"
 	"os"
 	"os/exec"
 )
@@ -23,4 +24,8 @@ func protect(appID, id string) string {
 	mac := hmac.New(sha256.New, []byte(id))
 	mac.Write([]byte(appID))
 	return hex.EncodeToString(mac.Sum(nil))
+}
+
+func readFile(filename string) ([]byte, error) {
+	return ioutil.ReadFile(filename)
 }

@@ -3,7 +3,6 @@
 package machineid
 
 import (
-	"io/ioutil"
 	"strings"
 )
 
@@ -29,8 +28,4 @@ func machineID() (string, error) {
 		return "", err
 	}
 	return strings.TrimSpace(string(id)), nil
-}
-
-func readFile(filename string) ([]byte, error) {
-	return ioutil.ReadFile(filename)
 }
