@@ -8,6 +8,7 @@ import (
 	"io/ioutil"
 	"os"
 	"os/exec"
+	"strings"
 )
 
 // run wraps `exec.Command` with easy access to stdout and stderr.
@@ -28,4 +29,8 @@ func protect(appID, id string) string {
 
 func readFile(filename string) ([]byte, error) {
 	return ioutil.ReadFile(filename)
+}
+
+func trim(s string) string {
+	return strings.TrimSpace(strings.Trim(s, "\n"))
 }

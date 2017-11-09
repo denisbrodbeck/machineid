@@ -67,3 +67,42 @@ func Test_run_unknown(t *testing.T) {
 		t.Error("unexpected error, expected exec not found")
 	}
 }
+
+func Test_trim(t *testing.T) {
+	type args struct {
+		s string
+	}
+	tests := []struct {
+		name string
+		args args
+		want string
+	}{
+		{
+			name: "nil",
+			args: args{s: ""},
+			want: "",
+		},
+		{
+			name: "space",
+			args: args{s: " space "},
+			want: "space",
+		},
+		{
+			name: "nl",
+			args: args{s: "data\n"},
+			want: "data",
+		},
+		{
+			name: "combined",
+			args: args{s: " some data \n"},
+			want: "some data",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := trim(tt.args.s); got != tt.want {
+				t.Errorf("trim() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}

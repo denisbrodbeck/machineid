@@ -2,10 +2,6 @@
 
 package machineid
 
-import (
-	"strings"
-)
-
 const (
 	// dbusPath is the default path for dbus machine id.
 	dbusPath = "/var/lib/dbus/machine-id"
@@ -27,5 +23,5 @@ func machineID() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	return strings.TrimSpace(string(id)), nil
+	return trim(string(id)), nil
 }

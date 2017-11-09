@@ -5,7 +5,6 @@ package machineid
 import (
 	"bytes"
 	"os"
-	"strings"
 )
 
 const hostidPath = "/etc/hostid"
@@ -30,7 +29,7 @@ func readHostid() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	return strings.TrimSpace(string(buf)), nil
+	return trim(string(buf)), nil
 }
 
 func readKenv() (string, error) {
@@ -39,5 +38,5 @@ func readKenv() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	return strings.TrimSpace(buf.String()), nil
+	return trim(buf.String()), nil
 }
