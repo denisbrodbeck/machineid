@@ -10,7 +10,7 @@
 
 * Cross-Platform (tested on Win7+, Debian 8+, Ubuntu 14.04+, OS X 10.6+, FreeBSD 11+)
 * No admin privileges required
-* Hardware independent (no usage of MAC, BIOS or CPU — those are to unreliable, especially in a VM environment)
+* Hardware independent (no usage of MAC, BIOS or CPU — those are too unreliable, especially in a VM environment)
 * IDs are unique<sup>[1](#unique-key-reliability)</sup> to the installed OS
 
 ## Installation
@@ -47,7 +47,7 @@ func main() {
 }
 ```
 
-Or even better use securely hashed machine IDs:
+Or even better, use securely hashed machine IDs:
 
 ```golang
 package main
@@ -139,7 +139,7 @@ hashedID, err := machineid.ProtectedID("myAppName")
 
 ## Snippets
 
-Don't want to download code and need just a way to get the data by yourself?
+Don't want to download code, and just need a way to get the data by yourself?
 
 BSD:
 
