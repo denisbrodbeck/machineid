@@ -1,4 +1,4 @@
-// +build freebsd netbsd openbsd
+// +build freebsd netbsd openbsd dragonfly
 
 package machineid
 
