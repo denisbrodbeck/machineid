@@ -165,6 +165,10 @@ ioreg -rd1 -c IOPlatformExpertDevice | grep IOPlatformUUID
 
 Windows:
 
+```batch
+reg query HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography /v MachineGuid
+```
+or
 * Open Windows Registry via `regedit`
 * Navigate to `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography`
 * Take value of key `MachineGuid`
