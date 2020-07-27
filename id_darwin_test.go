@@ -64,3 +64,13 @@ func Test_machineID(t *testing.T) {
 		t.Error("Got empty machine id")
 	}
 }
+
+func Test_runIoreg(t *testing.T) {
+	got, err := runIoreg(true)
+	if err != nil {
+		t.Error(err)
+	}
+	if got.String() == "" {
+		t.Error("Got empty machine id when using absolute ioreg path")
+	}
+}
