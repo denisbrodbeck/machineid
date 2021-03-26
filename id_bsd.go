@@ -1,4 +1,4 @@
-// +build freebsd netbsd openbsd dragonfly solaris
+// +build freebsd netbsd dragonfly solaris
 
 package machineid
 
