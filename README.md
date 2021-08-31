@@ -83,6 +83,7 @@ All machine IDs are usually generated during system installation and stay consta
 
 The following sources are used:
 
+* **AIX** uses the OS (or WPAR if applicable) UUID from the `os_uuid` attribute
 * **BSD** uses `/etc/hostid` and `smbios.system.uuid` as a fallback
 * **Linux** uses `/var/lib/dbus/machine-id` ([man](http://man7.org/linux/man-pages/man5/machine-id.5.html))
 * **OS X** uses `IOPlatformUUID`
@@ -140,6 +141,13 @@ hashedID, err := machineid.ProtectedID("myAppName")
 ## Snippets
 
 Don't want to download code, and just need a way to get the data by yourself?
+
+
+AIX:
+
+```bash
+lsattr -l sys0 -a os_uuid -E | cut -f 2 -d ' '
+```
 
 BSD:
 
