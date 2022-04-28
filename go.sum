@@ -1,0 +1,4 @@
+github.com/crowdsecurity/machineid v1.0.1 h1:N9u9iTuMguVMP5d6/5HaEaOlbrpNAAF2UXeTfQNLBqg=
+github.com/crowdsecurity/machineid v1.0.1/go.mod h1:hf2EmygXSg+gCU8/wX1siiH3ZeGGIzCzSNTYObiskhs=
+golang.org/x/sys v0.0.0-20220422013727-9388b58f7150 h1:xHms4gcpe1YE7A3yIllJXP16CMAGuqwO2lX1mTyyRRc=
+golang.org/x/sys v0.0.0-20220422013727-9388b58f7150/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
